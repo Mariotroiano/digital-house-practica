@@ -1,10 +1,11 @@
 function validationUser (req, res, next){
-    if (req.query.user == 'Ada' || req.query.user == 'Greta' || req.query.user == 'Tim' || req.query.user == 'Vim'){
-        res.send(`Hola ${req.query.user}`)
-    }else{
+    let users = ['Ada', 'Greta', 'Tim', 'Vim' ];
+
+    if (!req.query.user || !users.includes(req.query.user)){
         res.send('no tenes permisos para ingresar')
     }
     next()
 } 
-
 module.exports = validationUser
+        
+   

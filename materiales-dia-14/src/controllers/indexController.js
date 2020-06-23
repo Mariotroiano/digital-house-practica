@@ -5,7 +5,9 @@ firstfunction : function(req, res){
     
     res.send('holaaaa')
 },
-
+checkUser : function(req, res){
+    res.send(`Hola ${req.query.user}`)
+}
 }
 
 module.exports = indexFunctions;

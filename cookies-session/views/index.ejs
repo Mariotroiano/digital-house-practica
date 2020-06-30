@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+  </head>
+  <body  <% if(typeof color != 'undefined'){ %>
+    bgcolor="<%=color%>"
+    <% } %>
+  >
+     <form action="/" method="POST"> 
+      <label for="color">elige un color:</label>
+      <select name="color">
+      <option value="red" name="red" >rojo</option>
+      <option value="blue" name="blue">azul</option>
+      <option value="green" name="green">verde</option>
+      <option value="yellow" name="yellow">amarillo</option>
+    </select>
+    </br>
+    </br>
+    <input type="checkbox" name="remember">recordar color</br></br>
+    <input type="checkbox" name="forget">olvidar color</br></br>
+    <input type="submit" >
+  </form>  
+    <% if(typeof color != 'undefined'){ %>
+    <h3>el color que elegiste es <%=color%> </h3>
+    <% } %>
+      </body>
+    </html>
+
+   
+     
+    

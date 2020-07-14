@@ -59,17 +59,22 @@ detail : (req, res)=> {
     })
 },
 
+getSearch : (req, res) => {
+
+        res.render('search-movie')
+},
+
 search : (req, res ) => {
 
     db.Movies.findOne({
         where : {
             title : {
-                [db.Sequelize.Op.substring] : req.query.text
+                [db.Sequelize.Op.substring] : req.body.movieName
             }
         }
     })
     .then(movie => {
-        res.render('search-Movie', {movie : movie})
+        res.render('show-movie', {movie : movie})
     })
     .catch(err =>{
         console.log(err)

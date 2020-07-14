@@ -10,6 +10,7 @@ router.get('/detail/:idMovie/', moviesController.detail)
 
 router.get('/recommended', moviesController.recomended)
 
+router.get('/search', moviesController.getSearch)
 router.post('/search', moviesController.search)
 
 

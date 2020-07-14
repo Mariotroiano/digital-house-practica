@@ -14,9 +14,11 @@
         <title>Document</title>
     </head>
     <body>
-       <h1>Buscaste :</h1>
-            <a href="/movies/detail/<%= movie.id %>"> <li>Titulo : <%= movie.title %>  </li></a>
-          
+       <h1>Busca tu peli :</h1>
+        <form action="/movies/search" method="POST">
+           <input type="search" name="movieName">
+           <input type="submit" value="Buscar">
+        </form>
     </body>
     </html>
 </body>

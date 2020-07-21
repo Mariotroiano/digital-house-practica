@@ -10,9 +10,15 @@
     <h1>Titulos</h1>
 <ul>
     <% movies.forEach(movie => { %>
-   <a href="/movies/detail/<%= movie.id %>"> <li><%= movie.title %> </li></a>
+        <% if(movie.genres) { %>       
+   <a href="/movies/detail/<%= movie.id %>"> <li><%= movie.title %> - <strong>Genero :</strong><%= movie.genres.name %> </li></a>
+   <% } %>
    <%  }) %>
 </ul>
+
+<h3><a href="/movies/create">AGREGA TU PELICULA FAVORITA</a></h3>
+
+
 </body>
 </html>
         

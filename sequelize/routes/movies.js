@@ -14,11 +14,12 @@ router.get('/search', moviesController.getSearch)
 router.post('/search', moviesController.search)
 
 
+router.get('/create', moviesController.showCreate)
+router.post('/create', moviesController.create)
 
+router.get('/edit/:movieId', moviesController.showEdit)
+router.put('/edit/:movieId', moviesController.edit)
 
-
-// Deberá mostrar los resultados de búsqueda. Cada título de película
-// deberá ser un hipervínculo para ver el detalle de la misma. Idealmente el
-// usuario podría elegir el criterio de ordenamiento de los resultados
+router.get('/delete/:movieId', moviesController.destroy)
 
 module.exports = router

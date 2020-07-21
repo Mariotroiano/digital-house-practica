@@ -10,9 +10,21 @@
     <ul>    
         <li>Titulo : <%= movie.title %></li>
         <li>Rating : <%= movie.rating %></li>
-        <li>Awards : <%= movie.awards %></li>
+        <li>Premios : <%= movie.awards %></li>
         <li>Duracion : <%= movie.length %></li>
-        <li>Fecha estreno : <%= movie.release_date %></li>  
+        <li>Fecha estreno : <%= movie.release_date %></li>
+        
+
+        <h4>GENERO</h4>
+        <li> <%= movie.genres.name %></li>
+
+        <h4>ACTORES</h4>
+        <li> <%= movie.actors.first_name %></li>
+      
+
+        <h3><a href="/movies/edit/<%= movie.id %>">EDITAR PELI</a></h3>
+        <h3><a href="/movies/delete/<%= movie.id %>">ELIMINAR PELI </a></h3>
+
 </ul>
 </body>
 </html>

@@ -1,11 +1,17 @@
 let db = require('../db/models');
 
+
 let moviesFunctions = {
 
 list : (req, res) => {
-    db.Movies.findAll()
+    db.Movies.findAll(
+        {
+            include : [{association : 'genres'}]
+        }
+    )
     .then(movies => {      
-        console.log(movies)
+    console.log(movies)
+       
         res.render('movies', {movies : movies})
     })
     .catch(err =>{
@@ -15,7 +21,9 @@ list : (req, res) => {
 },
 
 detail : (req, res)=> {
-    db.Movies.findByPk(req.params.idMovie)
+    db.Movies.findByPk(req.params.idMovie, {
+        include : [ {association : 'genres'}, {association : 'actors'}]
+    })
     .then(movie =>{
         res.render('movie-detail', {movie : movie})
     })
@@ -33,7 +41,7 @@ detail : (req, res)=> {
          limit : 5
       })
       .then(movies => {
-          console.log(movies)
+          
           res.render('new-movies', {movies : movies})
       })
       .catch(err =>{
@@ -80,11 +88,67 @@ search : (req, res ) => {
         console.log(err)
         res.send("ocurrio un error")
     })
+},
+
+showCreate : (req, res) => {
+    res.render('create-movies')
+},
+
+create : (req, res) => {  
+    db.Movies.create({
+        ...req.body
+    })
+    .then(movie =>{
+        console.log(movie)
+        res.redirect('/movies')
+    })
+},
+
+showEdit : (req, res) => {
+    db.Movies.findByPk(req.params.movieId)
+    .then(movie => {
+        console.log(movie)
+        res.render('movies-edit', {movie : movie})
+    })
+    .catch(err => {
+        console.log(err)
+        res.send('no se encontro la pelicula')
+    })
+},
+
+edit : (req, res) => {
+
+    db.Movies.update({
+        ... req.body
+    }, 
+    {
+        where : {
+            id : req.params.movieId
+        }
+    })
+    .then(movie => {
+        res.redirect('/movies')
+    })
+    .catch(err => {
+        console.log(err);
+        res.send('no se pudo editar la pelicula')
+    })
+},
+
+destroy : (req, res) => {
+    db.Movies.destroy({
+        where : {
+            id : req.params.movieId
+        }
+    })
+    .then(movie => {
+        res.redirect('/movies')
+    })
+    .catch(err => {
+        console.log(err)
+        res.send('no se pudo eliminar la pelicula')
+    })
 }
-
-
-
-
   
 
 }

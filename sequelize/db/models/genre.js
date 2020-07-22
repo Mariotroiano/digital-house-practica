@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
         timestamps : true,
         underscored : true,
         createdAt : 'created_at',
-        updated_at : 'updated_at'
+        updatedAt : 'updated_at'
     }
 
     const Genre = sequelize.define(alias, cols, config)

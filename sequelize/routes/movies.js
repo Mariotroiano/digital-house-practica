@@ -4,9 +4,9 @@ let moviesController = require('../controllers/moviesController');
 
 router.get('/', moviesController.list)
 
-router.get('/new/', moviesController.newMovies)
+router.get('/new', moviesController.newMovies)
 
-router.get('/detail/:idMovie/', moviesController.detail)
+router.get('/detail/:idMovie', moviesController.detail)
 
 router.get('/recommended', moviesController.recomended)
 

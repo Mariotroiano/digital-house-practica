@@ -19,7 +19,10 @@
         <li> <%= movie.genres.name %></li>
 
         <h4>ACTORES</h4>
-        <li> <%= movie.actors.first_name %></li>
+        <% movie.actors.forEach(actor => { %>
+            <li>  <%= actor.first_name %> <%= actor.last_name %></li>
+
+       <% }) %>
       
 
         <h3><a href="/movies/edit/<%= movie.id %>">EDITAR PELI</a></h3>
